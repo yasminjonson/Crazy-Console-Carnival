@@ -92,10 +92,50 @@ namespace TextCarnivalV2.Source.CarnivalGames.AllCarnivalGames
                  String p4 = getInput();
 
                 }
-                    else;
-                
+            
+
+            // ask category
+            writeLine("Which category would you like?: ");
+            writeLine("[1] Movies");
 
             // prompt user for category and level of difficulty
+            writeLine("Which level of difficulty would you like?");
+            writeLine("[1] Cake");
+            writeLine("[2] Tough Shit");
+            writeLine("[3] Hard as Balls");
+            writeLine("[4] no");
+            String level = getInput();
+
+            // levels of difficulty gate
+
+            // movies cake
+            if (level == "1")
+            {
+                // print question
+                writeLine("Which production company made Monters Ink?");
+                String answer1 = getInput();
+
+                // check if its right
+
+                // show -/5
+
+                // next question if right
+            }
+
+            else if (level == "2")
+            {
+
+            }
+
+            else if (level == "3")
+            {
+
+            }
+
+            else if (level == "4")
+            {
+
+            }
 
             // randomizer of those questions in each category and level
 
