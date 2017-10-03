@@ -104,7 +104,7 @@ namespace TextCarnivalV2.Source.Client
                         //Server wants to read some client data
                         case "read":
 
-                            sendMsg(Console.ReadLine());
+                           sendMsg(Console.ReadLine());
 
                             break;
 
