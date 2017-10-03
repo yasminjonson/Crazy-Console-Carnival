@@ -18,82 +18,45 @@ namespace TextCarnivalV2.Source.CarnivalGames.AllCarnivalGames
         public override void play()
         {
             // CODE HERE
+            List<String> names = new List<string>();
 
             // print name and promp user for name and available prizes
             writeLine(" Hello and welcome to Trivia Mania!!!" );
             writeLine(" Get five questions in a row right and win the ~Grand Prize~ ");
-            writeLine(" How many players will be participating this round?  " );
 
-            // show choices of number of players 
-            writeLine(" [1] Single Player");
-            writeLine(" [2] Player v. Player ");
-            writeLine(" [3] Triple Threat ");
-            writeLine(" [4] Quadruple Showdown ");
+            int playerNum = 1;
 
-            String playerNum = getInput();
+            while (true)
+            {
+
+                writeLine(" How many players will be participating this round?  ");
+
+                // show choices of number of players 
+                writeLine(" [1] Single Player");
+                writeLine(" [2] Player v. Player ");
+                writeLine(" [3] Triple Threat ");
+                writeLine(" [4] Quadruple Showdown ");
+
+                String input = getInput();
+
+                if (int.TryParse(input, out playerNum))
+                    break;
+                else
+                {
+                    writeLine("You must enter a number of players.");
+                }
+            }
 
             // number of players
+            writeLine("What's your name?");
 
-                if (playerNum == "1")
-                {
+            for (int i = 0; i < playerNum; i++)
+            {
+                writeLine("Player " + (i+1) + ": ");
+                names.Add(getInput());
+            }
 
-                 // prompt names
-                 writeLine("What's your name?");
-                 String p1 = getInput();
-
-                }
-                else if (playerNum == "2")
-                {
-
-                // prompt names
-                 writeLine("What're your names?");
-
-                 writeLine("Player 1: ");
-                 String p1 = getInput();
-
-                 writeLine("Player 2: ");
-                 String p2 = getInput();
-
-                }
-
-                else if (playerNum == "3")
-                {
-
-                 // prompt names
-                 writeLine("What're your names");
-
-                 writeLine("Player 1: ");
-                 String p1 = getInput();
-
-                 writeLine("Player 2: ");
-                 String p2 = getInput();
-
-                 writeLine("Player 3: ");
-                 String p3 = getInput();
-
-                }
-
-                else if (playerNum == "4")
-                {
-
-                 // prompt names
-                 writeLine("What're your names");
-
-                 writeLine("Player 1: ");
-                 String p1 = getInput();
-
-                 writeLine("Player 2: ");
-                 String p2 = getInput();
-
-                 writeLine("Player 3: ");
-                 String p3 = getInput();
-
-                 writeLine("Player 4: ");
-                 String p4 = getInput();
-
-                }
             
-
             // ask category
             writeLine("Which category would you like?: ");
             writeLine("[1] Movies");
