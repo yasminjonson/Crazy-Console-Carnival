@@ -3,30 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TextCarnivalV2.Source.CarnivalGames.AllCarnivalGamesClasses;
 
-namespace TextCarnivalV2.Source.CarnivalGames.AllCarnivalGames
+namespace TextCarnivalV2.Source.CarnivalGames.AllCarnivalGamesClasses
 {
     class Question
     {
         public String question;
         public String[] answers;
         public int correctAnswer;
-        
+
         public int category;
         public int level;
 
-        public Question (int category, int level, String q, String[] a, int correct)
+        public Question(int category, int level, String q, String[] a, int correct)
         {
             this.category = category;
             this.question = q;
-            this.level    = level;
+            this.level = level;
 
-            this.answers       = a;
+            this.answers = a;
             this.correctAnswer = correct;
         }
     }
+}
 
-    class TriviaMania : CarnivalGame
+namespace TextCarnivalV2.Source.CarnivalGames.AllCarnivalGames
+{
+
+        class TriviaMania : CarnivalGame
     {
         private List<Question> questions;
 
