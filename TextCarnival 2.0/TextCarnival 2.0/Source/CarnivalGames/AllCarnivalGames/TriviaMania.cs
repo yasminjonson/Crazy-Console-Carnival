@@ -6,10 +6,39 @@ using System.Threading.Tasks;
 
 namespace TextCarnivalV2.Source.CarnivalGames.AllCarnivalGames
 {
+    class Question
+    {
+        public String question;
+        public String[] answers;
+        public int correctAnswer;
+        
+        public int category;
+        public int level;
+
+        public Question (int category, int level, String q, String[] a, int correct)
+        {
+            this.category = category;
+            this.question = q;
+            this.level    = level;
+
+            this.answers       = a;
+            this.correctAnswer = correct;
+        }
+    }
+
     class TriviaMania : CarnivalGame
     {
+        private List<Question> questions;
+
         public TriviaMania() : base()
         {
+            questions = new List<Question>();
+
+            // questions
+
+            // movies
+            questions.Add(new Question(1,1, "What color is the sky?", new String[] { "[A] red", "[B] blue", "[C] green", "[D] number" }, 1));
+            questions.Add(new Question(1,1, "What lwUDGCIFNNSNSULc?", new String[] { "[A] aFv", "[B] wrqv", "[C] qDDwv", "[D] qwFRErv"}, 2));
         }
 
         public override string getName()
@@ -37,8 +66,8 @@ namespace TextCarnivalV2.Source.CarnivalGames.AllCarnivalGames
 
                 if (int.TryParse(input, out playerNum))
                     break;
-                     else
-                     {writeLine("You must enter a number of players.");}
+                else
+                {writeLine("You must enter a number of players.");}
             }
 
             // number of players
@@ -61,9 +90,7 @@ namespace TextCarnivalV2.Source.CarnivalGames.AllCarnivalGames
                 if (int.TryParse(category, out categoryNum))
                     break;
                 else
-                {
-                    writeLine("You must choose one of the available categories");
-                }
+                {writeLine("You must choose one of the available categories");}
             }
 
             // prompt user for category and level of difficulty
@@ -81,44 +108,18 @@ namespace TextCarnivalV2.Source.CarnivalGames.AllCarnivalGames
                     break;
 
                 else
-                {
-                    writeLine("You must choose one of the available levels");
-                }
-            }
-            // levels of difficulty gate
-
-            // movies cake
-            /*if (level == "1")
-            {
-                // print question
-                writeLine("Which production company made Monters Ink?");
-                String answer1 = getInput();
-
-                // check if its right
-
-                // show -/5
-
-                // next question if right
+                {writeLine("You must choose one of the available levels");}
             }
 
-            else if (level == "2")
-            {
 
-            }
 
-            else if (level == "3")
-            {
 
-            }
 
-            else if (level == "4")
-            {
 
-            }
 
-            // randomizer of those questions in each category and level
 
-            // list available prizes to choose one*/
+
+           
         }
 
     }
