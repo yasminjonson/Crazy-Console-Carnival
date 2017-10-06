@@ -115,7 +115,7 @@ namespace TextCarnivalV2.Source.CarnivalGames.AllCarnivalGames
 
                 if (int.TryParse(level, out levelNum))
                 {
-                    //if ( levelNum > 4 )
+                    if ( levelNum < 4 )
                        break;
                 }
                     
@@ -125,14 +125,15 @@ namespace TextCarnivalV2.Source.CarnivalGames.AllCarnivalGames
             }
             // random int
             Random rnd = new Random();
-            int x = rnd.Next(1, 3);
 
             List<Question> possible = questions.Where(n => n.category == categoryNum && n.level == levelNum).ToList();
 
+            int qnum = rnd.Next(1, possible.Count);
+            Question q = possible[qnum];
+
+            writeLine(q.question);
 
 
-
-           
         }
 
     }
