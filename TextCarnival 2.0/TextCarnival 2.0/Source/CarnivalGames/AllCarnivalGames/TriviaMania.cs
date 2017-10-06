@@ -15,14 +15,16 @@ namespace TextCarnivalV2.Source.CarnivalGames.AllCarnivalGamesClasses
 
         public int category;
         public int level;
+        // public int x;
 
         public Question(int category, int level, String q, String[] a, int correct)
         {
             this.category = category;
             this.question = q;
-            this.level = level;
+            this.level    = level;
+            // this.x = x;
 
-            this.answers = a;
+            this.answers       = a;
             this.correctAnswer = correct;
         }
     }
@@ -39,7 +41,7 @@ namespace TextCarnivalV2.Source.CarnivalGames.AllCarnivalGames
         {
             questions = new List<Question>();
 
-            // questions
+            // questions go here
 
             // movies
             questions.Add(new Question(1,1, "What color is the sky?", new String[] { "[A] red", "[B] blue", "[C] green", "[D] number" }, 1));
@@ -62,7 +64,6 @@ namespace TextCarnivalV2.Source.CarnivalGames.AllCarnivalGames
 
             while (true)
             {
-
                 writeLine(" How many players will be participating this round?  ");
 
                 // show choices of number of players 
@@ -93,9 +94,12 @@ namespace TextCarnivalV2.Source.CarnivalGames.AllCarnivalGames
                 String category = getInput();
 
                 if (int.TryParse(category, out categoryNum))
+                {
+                    if (categoryNum == 1)
                     break;
+                }
                 else
-                {writeLine("You must choose one of the available categories");}
+                { writeLine("You must choose one of the available categories"); }
             }
 
             // prompt user for category and level of difficulty
@@ -110,16 +114,20 @@ namespace TextCarnivalV2.Source.CarnivalGames.AllCarnivalGames
                 String level = getInput();
 
                 if (int.TryParse(level, out levelNum))
-                    break;
+                {
+                    //if ( levelNum > 4 )
+                       break;
+                }
+                    
 
                 else
                 {writeLine("You must choose one of the available levels");}
             }
+            // random int
+            Random rnd = new Random();
+            int x = rnd.Next(1, 3);
 
-
-
-
-
+            List<Question> possible = questions.Where(n => n.category == categoryNum && n.level == levelNum).ToList();
 
 
 
