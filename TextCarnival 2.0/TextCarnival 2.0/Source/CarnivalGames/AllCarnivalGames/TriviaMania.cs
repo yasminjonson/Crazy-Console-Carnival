@@ -51,12 +51,16 @@ namespace TextCarnivalV2.Source.CarnivalGames.AllCarnivalGames
 
             // make 5 1,2
             this.questions.Add(new Question(1, 2, "What was the name of the whale in the 1993 movie, \"Free Willy\"?",                new String[] { "[A] Suni", "[B] Bobbi", "[C] Pickle", "[D] Keiko" }, 4));
+            this.questions.Add(new Question(1, 2, "what is a fear of disease?",                                                       new String[] { "[A] acrophobia", "[B] sickophobuia", "[C] common sense", "[D] eh idk hwaever the fukc" }, 2));
+            this.questions.Add(new Question(1, 2, "",                                                                                 new String[] { "", "", "", "" }, 3));
 
             // make 5 1,3
             this.questions.Add(new Question(1, 3, "Infamous English prisoner, Charels Bronson, was played by what actor in the 2008 film \"Bronson\"?", new String[] { "[A] your brother's jizz sock", "[B] Tom Hardy", "[C] that deer you hit earlier this month", "[D] Ron Swanson" }, 2));
+            this.questions.Add(new Question(1, 3, "What is the fear of choking?",                                                                       new String[] { "[A] catophobia", "[B] holy shit i cant breathe", "[C] no body likes being choked", "[D] please respect all kinks" }, 4));
 
             // make 5 1,4
-            this.questions.Add(new Question(1, 4, "In the movie Mean Girls, where is Caty originally from?",                                            new String[] { "[A] an anus", "[B] where all those starving kid commercials are filmed", " [C] Switzerland", "[D] Kentucky", }, 2));
+            this.questions.Add(new Question(1, 4, "In the movie Mean Girls, where is Caty originally from?",                                            new String[] { "[A] an anus", "[B] where all those starving kid commercials are filmed", "[C] Switzerland", "[D] Kentucky", }, 2));
+            this.questions.Add(new Question(1, 4, "What is a fear of dogs?",                                                                            new String[] { "[A] but they bite", "[B] fucking bullshite", "[C] i got bit by a dog once", "[D] cats tho" }, 2));
         }
 
         public override string getName()
@@ -128,32 +132,51 @@ namespace TextCarnivalV2.Source.CarnivalGames.AllCarnivalGames
                 {
                     if (levelNum <= 4)
                     {break;}}
-
-
-
-                else
-                { writeLine("You must choose one of the available levels"); }
-
+                   else
+                      { writeLine("You must choose one of the available levels"); }
 
             }
             // random int
-            Random rnd = new Random();
+            
+
+                Random rnd = new Random();
 
             List<Question> possible = this.questions.Where(n => n.category == categoryNum && n.level == levelNum).ToList();
 
-            int qnum = rnd.Next(0, possible.Count - 1);
 
-            Question q = possible[qnum];
+            int qnum = 0;
 
-            writeLine(q.question);
+            for (int i = 0; i < 300; i++)
+            {
+                qnum = rnd.Next(0, possible.Count - 1);
+                Question q = possible[qnum];
+                possible.RemoveAt(qnum);
+                possible.Add(q);
+            }
 
-            foreach (String answer in q.answers)
-            {writeLine(answer);}
 
-            write("What is your answer? : ");
-            String choice = getInput().ToUpper();
-            int answerIndex = choice[0] - 'A';
+            qnum = 0;
+            while (true)
+            {
 
+                Question q = possible[qnum];
+
+                writeLine(q.question);
+
+                foreach (String answer in q.answers)
+                { writeLine(answer); }
+
+                write("What is your answer? : ");
+                String choice = getInput().ToUpper();
+                int answerIndex = choice[0] - 'A';
+
+                qnum++;
+                if (qnum == possible.Count)
+                    qnum = 0;
+            }
+            
+            // check if answer is correct
+            //if (answerIndex == q.corre
 
         }
 
